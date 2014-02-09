@@ -1,0 +1,22 @@
+section
+  header
+    h2 New Topic
+  = form_for @submit_topic, url: topics_path do |f|
+    fieldset
+      legend Details
+      ol.fields
+        li
+          = f.label :title
+          = f.text_field :title
+        li
+          = f.label :overview
+          = f.text_field :overview
+    fieldset
+      legend Conference
+      ol.fields
+        li
+          = f.label :conference_id, 'Conference'
+          = f.select :conference_id, @submit_topic.conferences
+    ul.actions
+      li
+        = f.submit 'Create'

@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title Conf Planner
+    = stylesheet_link_tag("application", :media => "all")
+    = csrf_meta_tags
+  body
+    header#site-header
+      h1 Puree Sample
+      nav
+    
+    = yield
+    
+    footer#site-footer
+    = javascript_include_tag("application")

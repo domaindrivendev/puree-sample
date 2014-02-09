@@ -1,0 +1,33 @@
+Scenario: Create a conference
+
+POST /conferences
+
+Scenario: Call for submissions
+
+PUT /conferences/:id/call_for_submissions
+
+Scenario: Submit a topic
+
+POST /topics
+
+Scenario: Shortlist a topic
+
+GET /conferences/:id/topics
+
+PUT /topics/:id/shortlist
+
+Scenario: Unshortlist a topic
+
+GET /conferences/:id/topics
+
+PUT /topics/:id/unshortlist
+
+Scenario: Add a track
+
+GET /conference/:id/tracks
+
+POST /conference/:id/tracks
+
+Scenario: Add a session to a track
+
+POST /tracks/:id/sessions

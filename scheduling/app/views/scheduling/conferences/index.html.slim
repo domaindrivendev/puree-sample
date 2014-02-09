@@ -1,0 +1,27 @@
+section
+  header
+    h2 Conferences
+  table
+    thead
+      tr
+        th Id
+        th Name
+        th Description
+        th Date
+        th Location
+
+        th
+    tbody
+      - @conferences.each do |conference|
+        tr
+          td = conference.id
+          td = conference.name
+          td = conference.description
+          td = conference.date
+          td = conference.location
+
+          td
+            = link_to 'Manage', conference
+  ul.actions
+    li
+      = link_to 'New', new_conference_path

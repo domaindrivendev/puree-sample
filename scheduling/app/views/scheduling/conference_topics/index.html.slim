@@ -1,0 +1,48 @@
+section
+  header
+    h2 TODO: Conference summary
+  ul.menu
+    li
+      = link_to 'Info', conference_path(@conference)
+    li
+      span Topics
+    li
+      = link_to 'Tracks', conference_tracks_path(@conference)
+  table
+    legend Pending
+    thead
+      tr
+        th Id
+        th Topic
+        th Rating
+        th
+    tbody
+      - @conference.submitted_topics.each do |topic|
+        tr
+          td = topic.id
+          td = topic.title
+          td TODO:
+          td
+            = form_tag topic_shortlist_path(topic), :method => :put
+              = submit_tag 'Shortlist'
+  table
+    legend Shortlisted
+    thead
+      tr
+        th Id
+        th Topic
+        th Rating
+        th
+    tbody
+      - @conference.shortlisted_topics.each do |topic|
+        tr
+          td = topic.id
+          td = topic.title
+          td TODO:
+          td
+            = form_tag topic_unshortlist_path(topic.id), :method => :put
+              = submit_tag 'Remove'
+  ul.actions
+    li
+      = form_tag conference_call_for_submissions_path(@conference), :method => :put
+        = submit_tag 'Call for submissions', disabled: @conference.accepting_submissions?

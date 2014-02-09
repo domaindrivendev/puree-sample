@@ -1,0 +1,12 @@
+article.track
+  h3
+    = track.name
+  dl
+    - track.sessions.each do |session|
+      dt
+        = session.time_slot
+      dd
+        = session.title
+  ul.actions
+    li
+      = link_to 'New', new_track_session_path(track)

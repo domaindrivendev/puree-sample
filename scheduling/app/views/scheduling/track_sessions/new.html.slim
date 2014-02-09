@@ -1,0 +1,24 @@
+section
+  header
+    h2 New Session
+  = form_for @create_session, url: track_sessions_path(@create_session.track_id) do |f|
+    fieldset
+      legend Time
+      ol.fields
+        li
+          = f.label :start_time_hours, 'Start time'
+          = f.text_field :start_time_hours
+          = f.text_field :start_time_mins
+        li
+          = f.label :end_time_hours, 'End time'
+          = f.text_field :end_time_hours
+          = f.text_field :end_time_mins
+    fieldset
+      legend Topic
+      ol.fields
+        li
+          = f.label :topic_id
+          = f.select :topic_id, @create_session.topics
+    ul.actions
+      li
+        = f.submit 'Create'

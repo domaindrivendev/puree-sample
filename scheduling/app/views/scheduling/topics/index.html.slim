@@ -1,0 +1,18 @@
+section
+  header
+    h2 Topics
+  table
+    thead
+      tr
+        th Id
+        th Title
+        th Overview
+    tbody
+      - @topics.each do |topic|
+        tr
+          td = topic.id
+          td = topic.title
+          td = topic.overview
+  ul.actions
+    li
+      = link_to 'New', new_topic_path
