@@ -13,28 +13,25 @@ module Scheduling
   
     def create
       @submit_topic = SubmitTopic.new(params[:submit_topic])
-
       if @submit_topic.submit
         return redirect_to topics_path
       end
   
       render :new
     end
-  
+
     def shortlist
-      shortlist_topic = ShortlistTopic.new(topic_id: params[:topic_id])
+      shortlist_topic = ShortlistTopic.for(params[:topic_id])
       shortlist_topic.submit
 
-      topic = Topic.find(params[:topic_id])
-      redirect_to conference_topics_path(topic.conference_id)
+      redirect_to conference_topics_path(shortlist_topic.conference_id)
     end
 
     def unshortlist
-      unshortlist_topic = UnshortlistTopic.new(topic_id: params[:topic_id])
+      unshortlist_topic = UnshortlistTopic.for(params[:topic_id])
       unshortlist_topic.submit
       
-      topic = Topic.find(params[:topic_id])
-      redirect_to conference_topics_path(topic.conference_id)
+      redirect_to conference_topics_path(unshortlist_topic.conference_id)
     end
   end
 end

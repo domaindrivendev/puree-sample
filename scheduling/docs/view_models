@@ -1,0 +1,29 @@
+GET /conferences
+  Conference[]
+
+GET /conferences/new
+POST /conferences
+  NewConferenceForm
+
+GET /conferences/:id/topics
+  ConferenceTopics
+    ConferenceView
+    TopicViews[]
+
+GET /conferences/:id/tracks
+  ConferenceTracks
+    ConferenceView
+    TrackViews[]
+
+GET /conferences/:id/tracks/new
+POST /conferences/:id/tracks
+  TrackForm
+
+GET /tracks/:id/update
+  TrackForm
+    SessionForm[]
+
+PUT /topics/:id/shortlist
+  ShortlistTopicForm
+PUT /topics/:id/unshortlist
+  UnshortlistTopicForm

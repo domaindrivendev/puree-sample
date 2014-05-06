@@ -10,6 +10,9 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
+//= require ../../../vendor/assets/javascripts/jquery-1.10.1.min
+//= require ../../../vendor/assets/javascripts/handlebars-1.0.0
+//= require ../../../vendor/assets/javascripts/ember
+//= require ../../../vendor/assets/javascripts/ember-data
 //= require_tree .
+//= require planning/engine

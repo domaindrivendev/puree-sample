@@ -3,7 +3,7 @@ module Scheduling
   class ConferenceDenormalizer < Puree::EventListener
     
     on_event :conference_created do |args|
-      Conference.create(
+      ConferenceView.create(
         id: args[:id],
         name: args[:name],
         description: args[:description],
@@ -11,6 +11,14 @@ module Scheduling
         location: args[:location],
         status: args[:status].to_s
       )
+
+      ConferenceForm.create(
+        id: args[:id],
+        name: args[:name],
+        description: args[:description],
+        date: args[:date],
+        location: args[:location]
+      )  
     end
 
     on_event :called_for_submissions do |args|

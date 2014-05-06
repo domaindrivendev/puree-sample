@@ -19,32 +19,34 @@ module Scheduling
       apply_event :track_created do |args|
         @id = args[:id]
         @name = args[:name]
+        @sessions = []
       end
 
-      def add_session(start_time, end_time, topic)
-        raise ArgumentError.new('start_time') if start_time.nil?
-        raise ArgumentError.new('end_time') if end_time.nil?
+      def add_session(topic, start_time, end_time)
+        raise ArgumentError.new('topic required') if topic.nil?
+        raise ArgumentError.new('start_time required') if start_time.nil?
+        raise ArgumentError.new('end_time required') if end_time.nil?
 
-        raise InvalidSessionTime unless start_time.before?(end_time)
+        raise TopicNotShortlisted unless topic.shortlisted?
 
-        raise TopicNotShortlisted unless topic.shortlisted?     
+        new_session = Session.new(topic.id, start_time, end_time)
+        @sessions.each do |session|
+          raise ConflictingSessionTime if new_session.conflicts_with?(session)
+        end
 
         signal_event :track_session_added,
-          track_id: id,
-          start_time: start_time,
-          end_time: end_time,
-          topic_id: topic.id,
-          topic_title: topic.title
+          track_id: id, session: new_session
       end
 
       apply_event :track_session_added do |args|
+        @sessions << args[:session]
       end
-    end
-  
-    class InvalidSessionTime < StandardError
     end
 
     class TopicNotShortlisted < StandardError
+    end
+
+    class ConflictingSessionTime < StandardError
     end
 
   end

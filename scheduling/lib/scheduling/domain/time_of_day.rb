@@ -13,8 +13,24 @@ module Scheduling
         @ticks = ((hour * 60) + minute) * 60
       end
 
-      def before?(other)
-        @ticks < other.ticks
+      def hour
+        @ticks/60
+      end
+
+      def minute
+        @ticks%60
+      end
+
+      def later_than?(other)
+        @ticks > other.ticks
+      end
+
+      def between?(min, max)
+        @ticks >= min.ticks and @ticks <= max.ticks
+      end
+
+      def to_s
+        "%02d:%02d" % [hour, minute]
       end
 
       def ==(other)

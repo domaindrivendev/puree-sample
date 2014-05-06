@@ -1,7 +1,7 @@
 section
   header
     h2 New Conference
-  = form_for @create_conference, url: conferences_path do |f|
+  = form_for @conference_form, url: conferences_path do |f|
     fieldset
       legend Summary
       ol.fields

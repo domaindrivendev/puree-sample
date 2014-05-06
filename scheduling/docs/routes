@@ -28,6 +28,6 @@ GET /conference/:id/tracks
 
 POST /conference/:id/tracks
 
-Scenario: Add a session to a track
+Scenario: Update track sessions
 
-POST /tracks/:id/sessions
+PUT /tracks/:id/sessions

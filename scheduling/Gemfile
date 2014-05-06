@@ -9,6 +9,7 @@ gemspec
 gem "jquery-rails"
 
 gem 'slim-rails'
+gem 'cells'
 gem 'puree', path: '../../puree'
 gem 'puree-rails', path: '../../puree-rails'
 

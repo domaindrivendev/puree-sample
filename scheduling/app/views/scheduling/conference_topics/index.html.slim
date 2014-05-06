@@ -17,7 +17,7 @@ section
         th Rating
         th
     tbody
-      - @conference.submitted_topics.each do |topic|
+      - @conference.pending_topics.each do |topic|
         tr
           td = topic.id
           td = topic.title

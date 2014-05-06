@@ -1,8 +1,6 @@
 Website::Application.routes.draw do
   mount AccessControl::Engine => '/access'
-  mount Scheduling::Engine => '/scheduling'
-
-  root to: 'access_control/authentication#sign_in_form'
+  mount Planning::Engine => '/planning'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

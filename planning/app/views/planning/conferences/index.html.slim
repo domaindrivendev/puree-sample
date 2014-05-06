@@ -1,0 +1,71 @@
+section
+  header
+    h2 Conferences
+  table
+    thead
+      tr
+        th Id
+        th Name
+        th Description
+        th Date
+        th Location
+        th Status
+
+        th
+    tbody
+      - @conferences.each do |conference|
+        tr
+          td = conference.id
+          td = conference.name
+          td = conference.description
+          td = conference.date
+          td = conference.location
+          td = conference.status.humanize
+          td
+            = link_to 'Edit', edit_conference_path(conference)
+  ul.actions
+    li
+      = link_to 'New', new_conference_path
+  script type="text/x-handlebars" data-template-name="todos"
+    section#todoapp
+      header#header
+        h1 todos
+        input#new-todo type="text" placeholder="What needs to be done?"
+
+      section#main
+        ul#todo-list
+          li.completed
+            input.toggle type="checkbox"
+            label Learn Ember.js
+            button.destroy
+          li
+            input.toggle type="checkbox"
+            label ...
+            button.destroy
+          li
+            input.toggle type="checkbox"
+            label Profit!
+            button.destroy
+
+        input#toggle-all type="checkbox"
+
+      footer#footer
+        span#todo-count
+          strong 2
+          | todos left
+        ul#filters
+          li
+            a.selected href="all"
+              | All
+          li
+            a href="active"
+              | Active
+          li
+            a href="completed"
+              | Completed
+
+        button#clear-completed
+          | Clear completed (1)
+
+    footer#info
+      p Double-click to edit a todo

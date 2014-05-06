@@ -12,7 +12,7 @@ section
 
         th
     tbody
-      - @conferences.each do |conference|
+      - @conference_views.each do |conference|
         tr
           td = conference.id
           td = conference.name
@@ -21,7 +21,7 @@ section
           td = conference.location
 
           td
-            = link_to 'Manage', conference
+            = link_to 'Manage', edit_conference_path(conference)
   ul.actions
     li
       = link_to 'New', new_conference_path

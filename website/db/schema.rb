@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140204022209) do
+ActiveRecord::Schema.define(:version => 20140223231002) do
 
   create_table "event_records", :force => true do |t|
     t.integer  "event_stream_id"
@@ -37,6 +37,63 @@ ActiveRecord::Schema.define(:version => 20140204022209) do
   end
 
   add_index "id_counters", ["scope"], :name => "index_id_counters_on_scope", :unique => true
+
+  create_table "planning_conferences", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.date     "date"
+    t.string   "location"
+    t.string   "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "planning_sessions", :force => true do |t|
+    t.string   "start_hour"
+    t.string   "start_min"
+    t.string   "end_hour"
+    t.string   "end_min"
+    t.integer  "submission_id"
+    t.string   "submission_title"
+    t.integer  "track_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "planning_submissions", :force => true do |t|
+    t.string   "title"
+    t.text     "overview"
+    t.string   "status"
+    t.integer  "conference_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "planning_tracks", :force => true do |t|
+    t.string   "name"
+    t.integer  "conference_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "scheduling_conference_forms", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "date"
+    t.string   "location"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "scheduling_conference_views", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "date"
+    t.string   "location"
+    t.string   "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "scheduling_conferences", :force => true do |t|
     t.string   "name"
@@ -70,6 +127,13 @@ ActiveRecord::Schema.define(:version => 20140204022209) do
     t.integer  "conference_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "tests", :force => true do |t|
+    t.string   "foo"
+    t.string   "bar"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

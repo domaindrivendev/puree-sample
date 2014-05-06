@@ -1,3 +1,4 @@
+require_relative 'domain/session'
 require_relative 'domain/track'
 require_relative 'domain/topic'
 require_relative 'domain/time_of_day'

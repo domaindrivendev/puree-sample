@@ -20,15 +20,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
 gem 'slim-rails'
+gem 'cells'
 
 gem 'puree', path: '../../puree'
 gem 'puree-rails', path: '../../puree-rails'
 gem 'activerecord-tableless'
 
 gem 'access_control', path: '../access_control'
-gem 'scheduling', path: '../scheduling'
+gem 'planning', path: '../planning'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

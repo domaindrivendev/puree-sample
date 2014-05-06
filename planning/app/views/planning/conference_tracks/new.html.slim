@@ -1,0 +1,11 @@
+section
+  header
+    h2 New Track
+  = form_for @new_track_form, url: conference_tracks_path(@new_track_form.conference_id) do |f|
+    ol.fields
+      li
+        = f.label :name
+        = f.text_field :name
+    ul.actions
+      li
+        = f.submit 'Create'

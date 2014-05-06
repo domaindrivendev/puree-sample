@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Foo:
+  = @test.foo
+p
+  strong Bar:
+  = @test.bar
+
+= link_to 'Edit', edit_test_path(@test)
+'|
+= link_to 'Back', tests_path

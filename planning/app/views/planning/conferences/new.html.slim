@@ -1,0 +1,25 @@
+section
+  header
+    h2 New Conference
+  = form_for @new_conference_form, url: conferences_path do |f|
+    fieldset
+      legend Description
+      ol.fields
+        li
+          = f.label :name
+          = f.text_field :name
+        li
+          = f.label :description
+          = f.text_field :description
+    fieldset
+      legend Date & Location
+      ol.fields
+        li
+          = f.label :date
+          = f.text_field :date
+        li
+          = f.label :location
+          = f.text_field :location
+    ul.actions
+      li
+        = f.submit 'Create'

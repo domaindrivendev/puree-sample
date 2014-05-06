@@ -1,0 +1,11 @@
+section
+  header
+    h2 = "Edit Conference - #{@conference.name}"
+  ul.menu
+    li
+      span Details
+    li
+      = link_to 'Submissions', conference_submissions_path(@conference)
+    li
+      = link_to 'Tracks', conference_tracks_path(@conference)
+  p TODO: EditConferenceForm

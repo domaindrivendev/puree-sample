@@ -1,0 +1,32 @@
+article.track
+  h3
+    = @schedule_track.track_name
+  = form_for @schedule_track, url: track_schedule_path(@schedule_track.track_id)
+  table
+    legend Sessions
+    thead
+      tr
+        th Start time
+        th End time
+        th Topic
+      - @schedule_track.sessions.each do |session|
+        tr
+          td
+            = text_field_tag 'schedule_track[:sessions][][:start_time_hours]', session[:start_time_hours]
+            | :
+            = text_field_tag 'schedule_track[:sessions][][:start_time_mins]', session[:start_time_hours]
+          td
+            = text_field_tag 'schedule_track[:sessions][][:end_time_hours]', session[:end_time_hours]
+            | :
+            = text_field_tag 'schedule_track[:sessions][][:end_time_mins]', session[:end_time_mins]
+          td
+            = select_tag 'schedule_track[:sessions][][:topic_id]', session.topics
+  / dl
+  /   - track.sessions.each do |session|
+  /     dt
+  /       = session.time_slot
+  /     dd
+  /       = session.title
+  / ul.actions
+  /   li
+  /     = link_to 'New', new_track_session_path(track)

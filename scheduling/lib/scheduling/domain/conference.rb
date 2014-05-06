@@ -43,41 +43,6 @@ module Scheduling
         @status = :accepting_submissions
       end
 
-      def shortlist(topic)
-        signal_event :topic_shortlisted, conference_id: @id, topic_id: topic.id
-      end
-
-      apply_event :topic_shortlisted do |args|
-      end
-
-      def unshortlist(topic_id)
-        signal_event :topic_unshortlisted, conference_id: @id, topic_id: topic_id
-      end
-
-      apply_event :topic_unshortlisted do |args|
-      end
-
-      def add_session(topic_id, start_time, end_time)
-        session = Session.new(@id, topic_id, start_time, end_time)
-
-        signal_event :session_added, conference_id: @id, session: session
-      end
-
-      apply_event :session_added do |args|
-        @sessions << args[:session]
-      end
-
-      def remove_session_at(start_time)
-        session = @sessions.find { |s| s.start_time == start_time }
-        return if session.nil?
-
-        signal_event :session_removed, conference_id: @id, session: session
-      end
-
-      apply_event :session_removed do |args|
-        @sessions.delete(args[:session])
-      end
-
       def accepting_submissions?
         @status == :accepting_submissions
       end

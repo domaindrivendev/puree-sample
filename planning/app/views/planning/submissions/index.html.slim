@@ -1,0 +1,18 @@
+section
+  header
+    h2 Submissions
+  table
+    thead
+      tr
+        th Id
+        th Title
+        th Conference
+    tbody
+      - @submissions.each do |submission|
+        tr
+          td = submission.id
+          td = submission.title
+          td = submission.conference.name
+  ul.actions
+    li
+      = link_to 'New', new_submission_path

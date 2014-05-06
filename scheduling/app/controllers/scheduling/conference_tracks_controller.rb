@@ -4,19 +4,15 @@ module Scheduling
   class ConferenceTracksController < ApplicationController
   
     def index
-      @conference = Conference.find(params[:conference_id])
-    end
-  
-    def new
-      @create_track = CreateTrack.new(conference_id: params[:conference_id])
+      @view_model = ConferenceTracks.for(params[:conference_id])
     end
   
     def create
-      @create_track = CreateTrack.new(conference_id: params[:conference_id])
+      @create_track = CreateTrack.for(params[:conference_id])
       @create_track.attributes = params[:create_track]
 
       if @create_track.submit
-        return redirect_to conference_tracks_path(params[:conference_id])
+        return redirect_to conference_tracks_path(@create_track.conference_id)
       end
   
       render :new

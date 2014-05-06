@@ -1,9 +1,9 @@
-class CreateSchedulingConferences < ActiveRecord::Migration
+class CreatePlanningConferences < ActiveRecord::Migration
   def change
-    create_table :scheduling_conferences do |t|
+    create_table :planning_conferences do |t|
       t.integer :id
       t.string :name
-      t.text :description
+      t.string :description
       t.date :date
       t.string :location
       t.string :status

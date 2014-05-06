@@ -1,0 +1,24 @@
+section
+  header
+    h2 = "Edit Conference - #{@conference.name}"
+  ul.menu
+    li
+      = link_to 'Details', edit_conference_path(@conference)
+    li
+      = link_to 'Submissions', conference_submissions_path(@conference)
+    li
+      span Tracks
+  - conference.tracks.each do |track|
+    table
+      legend
+        = track.name
+      
+
+
+  script type="text/x-handlebars" data-template-name="track-mgmt"
+    table
+      thead
+        th Start
+        th End
+        th Topic
+        th
